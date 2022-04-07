@@ -50,7 +50,12 @@ shinyServer(function(input, output) {
                                  color = ~pal(magnitude), 
                                  fillColor = ~pal(magnitude), 
                                  fillOpacity = 0.6,
-                                 fill = T)
+                                 fill = T, 
+                                 popup = paste(
+                                     as.Date(nzeq$origintime,"%Y-%m-%d"),"<br/>",
+                                     "Magnitude: ",round(nzeq$magnitude,1),"<br/>",
+                                     "Depth: ",nzeq$depth, "km")
+                                 )
         }
     })
 })

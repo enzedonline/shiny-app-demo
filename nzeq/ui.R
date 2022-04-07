@@ -18,7 +18,7 @@ shinyUI(
                 #controls {
                   background-color: #fff;
                   opacity: 0.5;
-                  padding: 10px 25px 20px 25px;
+                  padding: 10px 25px 15px 25px;
                 }
                 #controls:hover{
                   opacity: 0.8;
@@ -48,21 +48,21 @@ shinyUI(
                                   value=as.Date(c("2019-06-01", "2020-06-01")),
                                   step=7,
                                   timeFormat="%Y-%m-%d",
-                                  animate = animationOptions(interval = 2000, loop = FALSE)
+                                  animate = animationOptions(interval = 3000, loop = FALSE)
                       ),
-                      HTML("<h4>Instructions</h4><small><p>
-                            Select a magnitude range to update the map with <br/>
-                            just those events.</p><p>
-                            Select a date range to update the map with only <br/>
-                            events in that date range.</p><p>
-                            To view an animation over time, select a narrow date<br/>
-                            range and click the small triangle at the right of<br/>
-                            the date slider.</p><p>
-                            For a smoother animation, it's recommended to use a<br/>
-                            short date range (3 weeks for example) and a filtered<br/>
-                            magnitude (3 to 6 for example).</p><p>
+                      HTML("<h4>Instructions</h4>
+                            <span style='font-size: 75%;'><p>
+                            Select a magnitude range to update the map with just those<br/>
+                            events.</p><p>
+                            Select a date range to update the map with only events in that <br/>
+                            date range.</p><p>
+                            To view an animation over time, select a narrow date range and <br/>
+                            click the small triangle at the right of the date slider.</p><p>
+                            For a smoother animation, it's recommended to use a short date <br/>
+                            range (2 weeks for example) and a filtered magnitude (4 to 6 <br/>
+                            for example) - the ShinyApp server is slow!.</p><p>
                             <a href='https://github.com/enzedonline/shiny-app-demo' target='_blank'>
-                            Code available on GitHub</a></p></small>
+                            Code available on GitHub</a></p></span>
                            ")
                       
         )
