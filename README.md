@@ -7,3 +7,5 @@ App published to <https://fmytyz-richard-allen.shinyapps.io/nzeq/>
 The animation runs a bit too slowly on the shinyapps free server, it's a lot smoother run locally.
 
 ![](nzeq-info.png)
+
+[Data Source Credit](https://www.kaggle.com/datasets/kkhandekar/earthquakes-data-nz?resource=download)
