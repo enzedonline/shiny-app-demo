@@ -30,7 +30,7 @@ shinyUI(
                 }
        "),
         absolutePanel(top=10, left=30, id = "title", class = "panel panel-default",
-                      h3("New Zealand Earthquake Data (01 Jan 2019 - 31 May 2020)")
+                      h3("New Zealand Earthquake Data (01 June 2019 - 31 May 2020)")
                       ),
         
         absolutePanel(top=80, left=30, id = "controls", class = "panel panel-default",
