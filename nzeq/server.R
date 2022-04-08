@@ -9,7 +9,8 @@ shinyServer(function(input, output) {
     filteredData <- reactive({
         nzeq %>%
             filter(magnitude >= input$magnitude[1] & magnitude <= input$magnitude[2]) %>%
-            filter(origintime >= input$date[1] &  origintime <= input$date[2])
+            filter(origintime >= input$date[1] &  origintime <= input$date[2]) %>%
+            arrange(magnitude)
     })
     
     palMap <- reactive({
