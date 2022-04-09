@@ -1,8 +1,5 @@
-
 library(shiny)
 library(leaflet)
-
-
 
 shinyServer(function(input, output) {
     
@@ -23,7 +20,7 @@ shinyServer(function(input, output) {
     output$eqPlot <- renderLeaflet({
         
         nzeq %>% 
-            leaflet() %>%
+            leaflet(options=leafletOptions(minZoom = 5)) %>%
             addTiles() %>%
             fitBounds(
                 ~min(longitude), 
@@ -35,28 +32,29 @@ shinyServer(function(input, output) {
                       title = "Magnitude",
                       opacity = 1
             )
-        
-    })
+        })
     
     observe({
         pal <- palMap()
         
         filtered <- filteredData()
-        map <- leafletProxy("eqPlot", data = filtered) %>%
-            clearMarkers() 
         
+        map <- leafletProxy("eqPlot", data = filtered)
+
         if (nrow(filtered)>0){
+            newGroup <- currentGroup + 1
             map %>%
-                addCircleMarkers(radius = ~((magnitude/2)^2), 
+                addCircleMarkers(group = as.character(newGroup),
+                                 radius = ~((magnitude/2)^2), 
                                  color = ~pal(magnitude), 
                                  fillColor = ~pal(magnitude), 
                                  fillOpacity = 0.6,
                                  fill = T, 
-                                 popup = paste(
-                                     as.Date(nzeq$origintime,"%Y-%m-%d"),"<br/>",
-                                     "Magnitude: ",round(nzeq$magnitude,1),"<br/>",
-                                     "Depth: ",nzeq$depth, "km")
-                                 )
+                                 stroke = F,
+                                 popup = ~(popUpText)
+                )
+            if (currentGroup!=0) {map %>% clearGroup(as.character(currentGroup))}
+            currentGroup <<- newGroup
         }
     })
 })
